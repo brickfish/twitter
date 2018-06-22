@@ -160,6 +160,7 @@ module Twitter
 
         perform_json_post_with_object('/1.1/direct_messages/events/new.json', options, Twitter::DirectMessage)
         # options[:json_post] = true 
+        # path = '/1.1/direct_messages/events/new.json'
         # response = perform_request(:post, path, options) 
         # response[:event]
       end

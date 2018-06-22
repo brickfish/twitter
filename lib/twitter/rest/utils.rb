@@ -67,7 +67,8 @@ module Twitter
       def perform_json_post_with_object(path, options, klass)
         options[:json_post] = true
         response = perform_request(:post, path, options)
-        klass.new(response[:event])
+        response[:event]
+        # klass.new(response[:event])
       end
 
       # @param request_method [Symbol]
