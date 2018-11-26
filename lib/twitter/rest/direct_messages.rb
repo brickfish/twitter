@@ -124,8 +124,13 @@ module Twitter
       # end
 
       # Implementing new API Endpoint
-      def destroy_direct_message(*args)
-        parallel_objects_from_response(Twitter::DirectMessage, :delete, '/1.1/direct_messages/events/destroy.json', args)
+      def destroy_direct_message(id)
+        # parallel_objects_from_response(Twitter::DirectMessage, :delete, '/1.1/direct_messages/events/destroy.json', args)
+
+        options = {
+          id: id
+        }
+        perform_json_delete_with_object('/1.1/direct_messages/events/destroy.json', options, Twitter::DirectMessage)
       end
 
       # Sends a new direct message to the specified user from the authenticating user
