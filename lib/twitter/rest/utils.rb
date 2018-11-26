@@ -70,6 +70,12 @@ module Twitter
         klass.new(response[:event])
       end
 
+      def perform_json_delete_with_object(path, options, klass)
+        options[:json_post] = true
+        response = perform_request(:delete, path, options)
+        klass.new(response)
+      end
+
       # @param request_method [Symbol]
       # @param path [String]
       # @param options [Hash]
