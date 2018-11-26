@@ -119,8 +119,13 @@ module Twitter
       # @overload destroy_direct_message(*ids, options)
       #   @param ids [Enumerable<Integer>] A collection of direct message IDs.
       #   @param options [Hash] A customizable set of options.
+      # def destroy_direct_message(*args)
+      #   parallel_objects_from_response(Twitter::DirectMessage, :post, '/1.1/direct_messages/destroy.json', args)
+      # end
+
+      # Implementing new API Endpoint
       def destroy_direct_message(*args)
-        parallel_objects_from_response(Twitter::DirectMessage, :post, '/1.1/direct_messages/destroy.json', args)
+        parallel_objects_from_response(Twitter::DirectMessage, :delete, '/1.1/direct_messages/events/destroy.json', args)
       end
 
       # Sends a new direct message to the specified user from the authenticating user
